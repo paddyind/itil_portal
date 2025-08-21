@@ -9,11 +9,12 @@ services:
     depends_on:
       - db
     environment:
-      - DB_NAME=itil_portal
-      - DB_USER=itil_user
-      - DB_PASSWORD=itil_password
-      - DB_HOST=db
-      - DB_PORT=5432
+      DB_ENGINE: django.db.backends.postgresql
+      DB_NAME: itil_portal
+      DB_USER: itil_user
+      DB_PASSWORD: itil_password
+      DB_HOST: db
+      DB_PORT: 5432
 
   db:
     image: postgres:13
