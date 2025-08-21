@@ -1,0 +1,28 @@
+services:
+  backend:
+    build: ./backend
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - ./backend:/app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    environment:
+      - DB_NAME=itil_portal
+      - DB_USER=itil_user
+      - DB_PASSWORD=itil_password
+      - DB_HOST=db
+      - DB_PORT=5432
+
+  db:
+    image: postgres:13
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_DB=itil_portal
+      - POSTGRES_USER=itil_user
+      - POSTGRES_PASSWORD=itil_password
+
+volumes:
+  postgres_data:
