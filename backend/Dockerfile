@@ -10,9 +10,17 @@ ENV PYTHONUNBUFFERED 1
 # Set work directory
 WORKDIR /app
 
+# Define build-time arguments for proxy
+ARG http_proxy
+ARG https_proxy
+
+# Set proxy environment variables. Pip will use these automatically.
+ENV http_proxy=$http_proxy
+ENV https_proxy=$https_proxy
+
 # Install dependencies
 COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install -r requirements.txt
 
 # Copy project
 COPY . .
