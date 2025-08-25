@@ -1,0 +1,13 @@
+{% extends "knowledge_base/base.html" %}
+
+{% block title %}Submit Feedback{% endblock %}
+
+{% block content %}
+<h1>Submit Feedback</h1>
+<p>We value your feedback. Please let us know if you have any questions, comments, or suggestions.</p>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+{% endblock %}
