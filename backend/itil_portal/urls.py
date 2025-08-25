@@ -15,9 +15,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from .views import health_check
+from .views import health_check, article_list, article_detail, category_article_list
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('health/', health_check),
+
+    # Knowledge Base URLs
+    path('articles/', article_list, name='article-list'),
+    path('articles/<int:pk>/', article_detail, name='article-detail'),
+    path('category/<int:category_id>/', category_article_list, name='category-article-list'),
 ]
